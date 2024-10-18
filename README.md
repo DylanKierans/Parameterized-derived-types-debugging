@@ -2,20 +2,20 @@
 
 ## Description 
 
-This repo is a minimal example to show compiler issue with `nvfortran` when dealing with Parameterized Derived Types (pdt) when using abstract types. A minimal working example reduced from ICON codebase.
+This repo is a minimal example to show `nvfortran` compiler issue with when dealing with Parameterized Derived Types (pdt) when using abstract types. A minimal working example reduced from ICON codebase.
 
 The program contains:
-* pdt type (`t_pdt`) - parameter derived type with a kind parameter
+* Type (`t_pdt`) - parameterized derived type with a kind parameter
 * Type (`t_base`) - Abstract type with deferred function `func`, which takes parameter `t_pdt` with `kind=real64`
 * Type (`t_ext`) - Non-abstract, concretized type extension of `t_base` which defines `func`
 
 Two files are given:
 
-* `f1.90`: 
+* `f1.90`: Intended code structure
   * `t_pdt` defined in `mo_pdt`
   * `t_base` defined in `mo_base`
   * `t_ext` defined in `mo_ext`
-* `f2.90`: 
+* `f2.90`: Incompatible code structure, used purely for debugging
   * `t_pdt` defined in `mo_pdt_base_ext`
   * `t_base` defined in `mo_pdt_base_ext`
   * `t_ext` defined in `mo_pdt_base_ext`
